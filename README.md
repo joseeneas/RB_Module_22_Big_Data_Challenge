@@ -57,3 +57,5 @@ In this challenge, you'll use your knowledge of SparkSQL to determine key metric
 #### 14. Un-cache the home_sales temporary table
 
 #### 15. Verify that the home_sales temporary table is uncached
+
+---------------------------------------------------------------
