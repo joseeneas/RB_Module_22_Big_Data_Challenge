@@ -48,7 +48,7 @@ print(F'OS Effective ID  : {os.geteuid()}')
 print(F'OS Effective GID : {os.getegid()}')
 print(F'Current dir      : {os.getcwd()}')
 print(F'Python version   : {sys.version}')
-print(F'Versio info      : {sys.version_info}')
+print(F'Version info     : {sys.version_info}')
 print(F'Python API Ver   : {sys.api_version}')
 print(F'Executable       : {sys.executable}')
 print(F'Hadoop home      : {os.environ.get("HADOOP_HOME")}')
@@ -323,6 +323,9 @@ end_time           = datetime.datetime.now()
 logStep("STEP 10 - DONE=========================================")
 step10_elapsed_time = end_time - start_time
 logStep(F"STEP 10 - ELAPSED TIME: {step10_elapsed_time} seconds=========")
+
+# %% [markdown]
+# Step 11 - Read the parquet formatted data.
 
 # %%
 # 
