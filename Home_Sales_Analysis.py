@@ -11,22 +11,54 @@
 #
 
 import sys
+import os
 from   colorama import Fore
 import datetime
+
+start_time = datetime.datetime.now()
 
 def logStep(msg):
     print(Fore.WHITE + str(datetime.datetime.now()) + ' ' + Fore.YELLOW + msg + Fore.WHITE)
     sys.stdout.flush()
-
-start_time = datetime.datetime.now()
+    
 logStep('STEP 0 - ENVIRONMENT PREPARATION======================')
 
 import warnings   
 import findspark                           
 from   pyspark     import SparkFiles  
 from   pyspark.sql import SparkSession
-
 warnings.filterwarnings('ignore')
+
+print(Fore.GREEN)
+print(F'Copyright        : {sys.copyright}')
+print(F'OS Platform      : {sys.platform}')
+print(F'OS Name          : {os.name}')
+print(F'OS HOME          : {os.environ.get("HOME")}')
+print(F'OS uName         : {os.uname().sysname}')
+print(F'OS NodeName      : {os.uname().nodename}')
+print(F'OS Release       : {os.uname().release}')
+print(F'OS Release Ver   : {os.uname().version}')
+print(F'OS Machine       : {os.uname().machine}')
+print(F'Process ID       : {os.getpid()}')
+print(F'Parent Process   : {os.getppid()}')
+print(F'OS User          : {os.getlogin()}')
+print(F'OS User ID       : {os.getuid()}')
+print(F'OS Group ID      : {os.getgid()}')
+print(F'OS Effective ID  : {os.geteuid()}')
+print(F'OS Effective GID : {os.getegid()}')
+print(F'Current dir      : {os.getcwd()}')
+print(F'Python version   : {sys.version}')
+print(F'Versio info      : {sys.version_info}')
+print(F'Python API Ver   : {sys.api_version}')
+print(F'Executable       : {sys.executable}')
+print(F'Hadoop home      : {os.environ.get("HADOOP_HOME")}')
+print(F'Spark version    : {findspark.__version__}')
+print(F'Spark home(Find) : {findspark.find()}')
+print(F'Spark Home(Env)  : {os.environ.get("SPARK_HOME")}')
+print(F'Spark UI         : http://localhost:4040')
+print(F'Spark submit     : {sys.argv[0]}')
+print(F'Java home        : {os.environ.get("JAVA_HOME")}')
+print()
 
 logStep("STEP 0 - DONE=========================================");
 end_time           = datetime.datetime.now()
@@ -48,6 +80,7 @@ findspark.init()
 spark = SparkSession.builder.appName("SparkSQL").getOrCreate()
 
 url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.2/22-big-data/home_sales_revised.csv"
+
 spark.sparkContext.addFile(url)
 home_df = spark.read.csv(SparkFiles.get("home_sales_revised.csv"), sep=",", header=True, ignoreLeadingWhiteSpace=True)
 home_df.show()
@@ -70,7 +103,8 @@ logStep("STEP 2 - CREATE A TEMPORARY VIEW======================")
 print(Fore.GREEN)
 
 home_df.createOrReplaceTempView('home_sales')
-
+print('This step does not produce visible output.')
+print('')
 logStep("STEP 2 - DONE=========================================")
 end_time           = datetime.datetime.now()
 step2_elapsed_time = end_time - start_time
@@ -192,6 +226,8 @@ print(Fore.GREEN)
 
 spark.sql("cache table home_sales")
 
+print('This step does not produce visible output.')
+print()
 end_time           = datetime.datetime.now()
 logStep("STEP 7 - DONE=========================================")
 step7_elapsed_time = end_time - start_time
@@ -349,6 +385,11 @@ logStep("STEP 13 - DONE=========================================")
 step13_elapsed_time = end_time - start_time
 logStep(F"STEP 13 - ELAPSED TIME: {step13_elapsed_time} seconds=========")
 
+# %% [markdown]
+# 
+# Step 13.1 Determine the runtime and compare to the original runtime
+# 
+
 # %%
 #
 # Step 13.1 - Determine the runtime and compare it to the cached version.
@@ -367,9 +408,12 @@ logStep("STEP 13.1 - DONE=======================================")
 step131_elapsed_time = end_time - start_time
 logStep(F"STEP 13.1 - ELAPSED TIME: {step131_elapsed_time} seconds=======")
 
+# %% [markdown]
+# Step 14 - Un-cache the home_sales temporary table.
+
 # %%
 # 
-# 14. Un-cache the home_sales temporary table.
+# Step 14 - Un-cache the home_sales temporary table.
 #
 
 start_time         = datetime.datetime.now()
@@ -377,15 +421,20 @@ logStep("STEP 14 - UN-CACHE=====================================")
 print(Fore.GREEN)
 
 spark.sql("uncache table home_sales")
+print('This step does not produce visible output.')
+print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 14 - DONE=========================================")
 step14_elapsed_time = end_time - start_time
 logStep(F"STEP 14 - ELAPSED TIME: {step14_elapsed_time} seconds=========")
 
+# %% [markdown]
+# Step 15 - Check if the home_sales is no longer cached
+
 # %%
 # 
-# Step 15. Check if the home_sales is no longer cached
+# Step 15 - Check if the home_sales is no longer cached
 #
 start_time         = datetime.datetime.now()
 logStep("STEP 15 - CACHE= CHECK=================================")

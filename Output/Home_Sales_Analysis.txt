@@ -1,7 +1,47 @@
-[37m2023-09-03 21:38:47.738883 [33mSTEP 0 - ENVIRONMENT PREPARATION======================[37m
-[37m2023-09-03 21:38:47.793404 [33mSTEP 0 - DONE=========================================[37m
-[37m2023-09-03 21:38:47.793435 [33mSTEP 0 - ELAPSED TIME: 0:00:00.054553 seconds=========[37m
-[37m2023-09-03 21:38:47.793446 [33mSTEP 1 - READ SOURCE DATA=============================[37m
+[37m2023-09-04 18:27:29.563681 [33mSTEP 0 - ENVIRONMENT PREPARATION======================[37m
+[32m
+Copyright        : Copyright (c) 2001-2023 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved.
+OS Platform      : darwin
+OS Name          : posix
+OS HOME          : /Users/eneas
+OS uName         : Darwin
+OS NodeName      : MBPJES14M2.local
+OS Release       : 23.0.0
+OS Release Ver   : Darwin Kernel Version 23.0.0: Tue Aug 22 02:11:55 PDT 2023; root:xnu-10002.1.11~16/RELEASE_ARM64_T6020
+OS Machine       : arm64
+Process ID       : 19402
+Parent Process   : 9382
+OS User          : eneas
+OS User ID       : 501
+OS Group ID      : 20
+OS Effective ID  : 501
+OS Effective GID : 20
+Current dir      : /Users/eneas/Documents/GitHub/RB_Module_22_Big_Data_Challenge
+Python version   : 3.11.5 | packaged by conda-forge | (main, Aug 27 2023, 03:33:12) [Clang 15.0.7 ]
+Version info     : sys.version_info(major=3, minor=11, micro=5, releaselevel='final', serial=0)
+Python API Ver   : 1013
+Executable       : /Users/eneas/anaconda3/envs/myProd/bin/python
+Hadoop home      : None
+Spark version    : 2.0.1
+Spark home(Find) : /Users/eneas/anaconda3/envs/myProd/lib/python3.11/site-packages/pyspark
+Spark Home(Env)  : None
+Spark UI         : http://localhost:4040
+Spark submit     : Home_Sales_Analysis.py
+Java home        : /Users/eneas/anaconda3/envs/myProd
+
+[37m2023-09-04 18:27:29.683702 [33mSTEP 0 - DONE=========================================[37m
+[37m2023-09-04 18:27:29.683879 [33mSTEP 0 - ELAPSED TIME: 0:00:00.120194 seconds=========[37m
+[37m2023-09-04 18:27:29.683925 [33mSTEP 1 - READ SOURCE DATA=============================[37m
 [32m
 +--------------------+----------+----------+------+--------+---------+-----------+--------+------+----------+----+
 |                  id|      date|date_built| price|bedrooms|bathrooms|sqft_living|sqft_lot|floors|waterfront|view|
@@ -29,13 +69,15 @@
 +--------------------+----------+----------+------+--------+---------+-----------+--------+------+----------+----+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:52.363913 [33mSTEP 1 - DONE=========================================[37m
-[37m2023-09-03 21:38:52.364047 [33mSTEP 1 - ELAPSED TIME: 0:00:04.570596 seconds=========[37m
-[37m2023-09-03 21:38:52.364061 [33mSTEP 2 - CREATE A TEMPORARY VIEW======================[37m
+[37m2023-09-04 18:27:34.312963 [33mSTEP 1 - DONE=========================================[37m
+[37m2023-09-04 18:27:34.313101 [33mSTEP 1 - ELAPSED TIME: 0:00:04.629175 seconds=========[37m
+[37m2023-09-04 18:27:34.313115 [33mSTEP 2 - CREATE A TEMPORARY VIEW======================[37m
 [32m
-[37m2023-09-03 21:38:52.381456 [33mSTEP 2 - DONE=========================================[37m
-[37m2023-09-03 21:38:52.381508 [33mSTEP 2 - ELAPSED TIME: 0:00:00.017444 seconds=========[37m
-[37m2023-09-03 21:38:52.381520 [33mSTEP 3 - WHAT IS THE AVERAGE PRICE?=4BR===============[37m
+This step does not produce visible output.
+
+[37m2023-09-04 18:27:34.330567 [33mSTEP 2 - DONE=========================================[37m
+[37m2023-09-04 18:27:34.330616 [33mSTEP 2 - ELAPSED TIME: 0:00:00.017497 seconds=========[37m
+[37m2023-09-04 18:27:34.330629 [33mSTEP 3 - WHAT IS THE AVERAGE PRICE?=4BR===============[37m
 [32m
 +----+---------+
 |YEAR|  AVERAGE|
@@ -46,9 +88,9 @@ only showing top 20 rows
 |2019| 300263.7|
 +----+---------+
 
-[37m2023-09-03 21:38:53.000256 [33mSTEP 3 - DONE=========================================[37m
-[37m2023-09-03 21:38:53.000315 [33mSTEP 3 - ELAPSED TIME: 0:00:00.618791 seconds=========[37m
-[37m2023-09-03 21:38:53.000337 [33mSTEP 4 - WHAT IS THE AVERAGE PRICE?=3BR/3B============[37m
+[37m2023-09-04 18:27:34.957415 [33mSTEP 3 - DONE=========================================[37m
+[37m2023-09-04 18:27:34.957471 [33mSTEP 3 - ELAPSED TIME: 0:00:00.626836 seconds=========[37m
+[37m2023-09-04 18:27:34.957482 [33mSTEP 4 - WHAT IS THE AVERAGE PRICE?=3BR/3B============[37m
 [32m
 +----+---------+
 |YEAR|  AVERAGE|
@@ -63,9 +105,9 @@ only showing top 20 rows
 |2010|292859.62|
 +----+---------+
 
-[37m2023-09-03 21:38:53.245574 [33mSTEP 4 - DONE=========================================[37m
-[37m2023-09-03 21:38:53.245622 [33mSTEP 4 - ELAPSED TIME: 0:00:00.245232 seconds=========[37m
-[37m2023-09-03 21:38:53.245634 [33mSTEP 5 - WHAT IS THE AVERAGE PRICE?=3R/3/2============[37m
+[37m2023-09-04 18:27:35.187574 [33mSTEP 4 - DONE=========================================[37m
+[37m2023-09-04 18:27:35.187624 [33mSTEP 4 - ELAPSED TIME: 0:00:00.230085 seconds=========[37m
+[37m2023-09-04 18:27:35.187636 [33mSTEP 5 - WHAT IS THE AVERAGE PRICE?=3R/3/2============[37m
 [32m
 +----+---------+
 |YEAR|  AVERAGE|
@@ -80,9 +122,9 @@ only showing top 20 rows
 |2010|285010.22|
 +----+---------+
 
-[37m2023-09-03 21:38:53.436345 [33mSTEP 5 - DONE=========================================[37m
-[37m2023-09-03 21:38:53.436389 [33mSTEP 5 - ELAPSED TIME: 0:00:00.190705 seconds=========[37m
-[37m2023-09-03 21:38:53.436401 [33mSTEP 6 - WHAT IS THE AVERAGE PRICE?=300K==============[37m
+[37m2023-09-04 18:27:35.374850 [33mSTEP 5 - DONE=========================================[37m
+[37m2023-09-04 18:27:35.374943 [33mSTEP 5 - ELAPSED TIME: 0:00:00.187201 seconds=========[37m
+[37m2023-09-04 18:27:35.374980 [33mSTEP 6 - WHAT IS THE AVERAGE PRICE?=300K==============[37m
 [32m
 +----+---------+
 |VIEW|  AVERAGE|
@@ -110,19 +152,21 @@ only showing top 20 rows
 +----+---------+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:53.661977 [33mSTEP 6 - DONE=========================================[37m
-[37m2023-09-03 21:38:53.662025 [33mSTEP 6 - ELAPSED TIME: 0:00:00.225568 seconds=========[37m
-[37m2023-09-03 21:38:53.662036 [33mSTEP 7 - CACHE HOME DATA==============================[37m
+[37m2023-09-04 18:27:35.575482 [33mSTEP 6 - DONE=========================================[37m
+[37m2023-09-04 18:27:35.575530 [33mSTEP 6 - ELAPSED TIME: 0:00:00.200497 seconds=========[37m
+[37m2023-09-04 18:27:35.575542 [33mSTEP 7 - CACHE HOME DATA==============================[37m
 [32m
-[37m2023-09-03 21:38:53.999803 [33mSTEP 7 - DONE=========================================[37m
-[37m2023-09-03 21:38:53.999848 [33mSTEP 7 - ELAPSED TIME: 0:00:00.337761 seconds=========[37m
-[37m2023-09-03 21:38:53.999860 [33mSTEP 8 - IS THE DATA CACHED===========================[37m
+This step does not produce visible output.
+
+[37m2023-09-04 18:27:35.962107 [33mSTEP 7 - DONE=========================================[37m
+[37m2023-09-04 18:27:35.962154 [33mSTEP 7 - ELAPSED TIME: 0:00:00.386560 seconds=========[37m
+[37m2023-09-04 18:27:35.962165 [33mSTEP 8 - IS THE DATA CACHED===========================[37m
 [32m
 home_sales is cached
 [32m
-[37m2023-09-03 21:38:54.004959 [33mSTEP 8 - DONE=========================================[37m
-[37m2023-09-03 21:38:54.004987 [33mSTEP 8 - ELAPSED TIME: 0:00:00.005096 seconds=========[37m
-[37m2023-09-03 21:38:54.004999 [33mSTEP 9 - REPEAT QUERY=================================[37m
+[37m2023-09-04 18:27:35.967640 [33mSTEP 8 - DONE=========================================[37m
+[37m2023-09-04 18:27:35.967668 [33mSTEP 8 - ELAPSED TIME: 0:00:00.005471 seconds=========[37m
+[37m2023-09-04 18:27:35.967677 [33mSTEP 9 - REPEAT QUERY=================================[37m
 [32m
 +----+---------+
 |VIEW|  AVERAGE|
@@ -150,17 +194,17 @@ home_sales is cached
 +----+---------+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:54.103346 [33mSTEP 9 - DONE=========================================[37m
-[37m2023-09-03 21:38:54.103388 [33mSTEP 9 - ELAPSED TIME: 0:00:00.098341 seconds=========[37m
-[37m2023-09-03 21:38:54.103399 [33mSTEP 9.1 - RUNTIME DIFFERENCE =========================[37m
+[37m2023-09-04 18:27:36.074064 [33mSTEP 9 - DONE=========================================[37m
+[37m2023-09-04 18:27:36.074125 [33mSTEP 9 - ELAPSED TIME: 0:00:00.106381 seconds=========[37m
+[37m2023-09-04 18:27:36.074136 [33mSTEP 9.1 - RUNTIME DIFFERENCE =========================[37m
 [32m
-Time required for a non-cached Query: 0:00:00.225568
-Time required for a cached Query    : 0:00:00.098341
-Time difference                     : 0:00:00.127227
+Time required for a non-cached Query: 0:00:00.200497
+Time required for a cached Query    : 0:00:00.106381
+Time difference                     : 0:00:00.094116
 [32m
-[37m2023-09-03 21:38:54.103416 [33mSTEP 9.1 - DONE========================================[37m
-[37m2023-09-03 21:38:54.103425 [33mSTEP 9.1 - ELAPSED TIME: 0:00:00.000017 seconds========[37m
-[37m2023-09-03 21:38:54.103431 [33mSTEP 10 - FORMATTED PARQUET============================[37m
+[37m2023-09-04 18:27:36.074150 [33mSTEP 9.1 - DONE========================================[37m
+[37m2023-09-04 18:27:36.074158 [33mSTEP 9.1 - ELAPSED TIME: 0:00:00.000013 seconds========[37m
+[37m2023-09-04 18:27:36.074164 [33mSTEP 10 - FORMATTED PARQUET============================[37m
 [32m
 +--------------------+----------+----------+------+--------+---------+-----------+--------+------+----------+----+
 |                  id|      date|date_built| price|bedrooms|bathrooms|sqft_living|sqft_lot|floors|waterfront|view|
@@ -188,9 +232,9 @@ Time difference                     : 0:00:00.127227
 +--------------------+----------+----------+------+--------+---------+-----------+--------+------+----------+----+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:54.937614 [33mSTEP 10 - DONE=========================================[37m
-[37m2023-09-03 21:38:54.937681 [33mSTEP 10 - ELAPSED TIME: 0:00:00.834176 seconds=========[37m
-[37m2023-09-03 21:38:54.937693 [33mSTEP 11 - READ PARQUET=================================[37m
+[37m2023-09-04 18:27:36.877964 [33mSTEP 10 - DONE=========================================[37m
+[37m2023-09-04 18:27:36.878008 [33mSTEP 10 - ELAPSED TIME: 0:00:00.803794 seconds=========[37m
+[37m2023-09-04 18:27:36.878030 [33mSTEP 11 - READ PARQUET=================================[37m
 [32m
 +--------------------+----------+------+--------+---------+-----------+--------+------+----------+----+----------+
 |                  id|      date| price|bedrooms|bathrooms|sqft_living|sqft_lot|floors|waterfront|view|date_built|
@@ -218,9 +262,9 @@ only showing top 20 rows
 +--------------------+----------+------+--------+---------+-----------+--------+------+----------+----+----------+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:55.120073 [33mSTEP 11 - DONE=========================================[37m
-[37m2023-09-03 21:38:55.120131 [33mSTEP 11 - ELAPSED TIME: 0:00:00.182373 seconds=========[37m
-[37m2023-09-03 21:38:55.120144 [33mSTEP 12 - CREATE PARQUET VIEW==========================[37m
+[37m2023-09-04 18:27:37.063638 [33mSTEP 11 - DONE=========================================[37m
+[37m2023-09-04 18:27:37.063689 [33mSTEP 11 - ELAPSED TIME: 0:00:00.185602 seconds=========[37m
+[37m2023-09-04 18:27:37.063700 [33mSTEP 12 - CREATE PARQUET VIEW==========================[37m
 [32m
 +--------------------+----------+------+--------+---------+-----------+--------+------+----------+----+----------+
 |                  id|      date| price|bedrooms|bathrooms|sqft_living|sqft_lot|floors|waterfront|view|date_built|
@@ -248,9 +292,9 @@ only showing top 20 rows
 +--------------------+----------+------+--------+---------+-----------+--------+------+----------+----+----------+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:55.164170 [33mSTEP 12 - DONE=========================================[37m
-[37m2023-09-03 21:38:55.164233 [33mSTEP 12 - ELAPSED TIME: 0:00:00.044020 seconds=========[37m
-[37m2023-09-03 21:38:55.164246 [33mSTEP 13 - REPEAT QUERY=================================[37m
+[37m2023-09-04 18:27:37.099450 [33mSTEP 12 - DONE=========================================[37m
+[37m2023-09-04 18:27:37.099514 [33mSTEP 12 - ELAPSED TIME: 0:00:00.035744 seconds=========[37m
+[37m2023-09-04 18:27:37.099526 [33mSTEP 13 - REPEAT QUERY=================================[37m
 [32m
 +----+---------+
 |VIEW|  AVERAGE|
@@ -278,53 +322,55 @@ only showing top 20 rows
 +----+---------+
 only showing top 20 rows
 
-[37m2023-09-03 21:38:55.349676 [33mSTEP 13 - DONE=========================================[37m
-[37m2023-09-03 21:38:55.349719 [33mSTEP 13 - ELAPSED TIME: 0:00:00.185424 seconds=========[37m
-[37m2023-09-03 21:38:55.349730 [33mSTEP 13.1 - RUNTIME DIFFERENCE ========================[37m
+[37m2023-09-04 18:27:37.282842 [33mSTEP 13 - DONE=========================================[37m
+[37m2023-09-04 18:27:37.282886 [33mSTEP 13 - ELAPSED TIME: 0:00:00.183310 seconds=========[37m
+[37m2023-09-04 18:27:37.282898 [33mSTEP 13.1 - RUNTIME DIFFERENCE ========================[37m
 [32m
-Time required for a non-cached Query    : 0:00:00.225568
-Time required for a parquet cached Query: 0:00:00.185424
-Time difference                         : 0:00:00.040144
+Time required for a non-cached Query    : 0:00:00.200497
+Time required for a parquet cached Query: 0:00:00.183310
+Time difference                         : 0:00:00.017187
 [32m
-[37m2023-09-03 21:38:55.349741 [33mSTEP 13.1 - DONE=======================================[37m
-[37m2023-09-03 21:38:55.349748 [33mSTEP 13.1 - ELAPSED TIME: 0:00:00.000011 seconds=======[37m
-[37m2023-09-03 21:38:55.349754 [33mSTEP 14 - UN-CACHE=====================================[37m
+[37m2023-09-04 18:27:37.282911 [33mSTEP 13.1 - DONE=======================================[37m
+[37m2023-09-04 18:27:37.282919 [33mSTEP 13.1 - ELAPSED TIME: 0:00:00.000013 seconds=======[37m
+[37m2023-09-04 18:27:37.282924 [33mSTEP 14 - UN-CACHE=====================================[37m
 [32m
-[37m2023-09-03 21:38:55.366460 [33mSTEP 14 - DONE=========================================[37m
-[37m2023-09-03 21:38:55.366496 [33mSTEP 14 - ELAPSED TIME: 0:00:00.016702 seconds=========[37m
-[37m2023-09-03 21:38:55.366506 [33mSTEP 15 - CACHE= CHECK=================================[37m
+This step does not produce visible output.
+
+[37m2023-09-04 18:27:37.297679 [33mSTEP 14 - DONE=========================================[37m
+[37m2023-09-04 18:27:37.297715 [33mSTEP 14 - ELAPSED TIME: 0:00:00.014750 seconds=========[37m
+[37m2023-09-04 18:27:37.297729 [33mSTEP 15 - CACHE= CHECK=================================[37m
 [32m
 home_sales is not cached
 [32m
-[37m2023-09-03 21:38:55.368476 [33mSTEP 15 - DONE=========================================[37m
-[37m2023-09-03 21:38:55.368513 [33mSTEP 15 - ELAPSED TIME: 0:00:00.001966 seconds=========[37m
-[37m2023-09-03 21:38:55.368522 [33m=========TOTAL RUN TIME================================[37m
+[37m2023-09-04 18:27:37.300223 [33mSTEP 15 - DONE=========================================[37m
+[37m2023-09-04 18:27:37.300262 [33mSTEP 15 - ELAPSED TIME: 0:00:00.002491 seconds=========[37m
+[37m2023-09-04 18:27:37.300272 [33m=========TOTAL RUN TIME================================[37m
 [32m
 Total Runtime, per Step
 
-Step  0:   0:00:00.054553 seconds
-Step  1:   0:00:04.570596 seconds
-Step  2:   0:00:00.017444 seconds
-Step  3:   0:00:00.618791 seconds
-Step  4:   0:00:00.245232 seconds
-Step  5:   0:00:00.190705 seconds
-[31mStep  6:   0:00:00.225568 seconds - non-cached query[32m
-[32mStep  7:   0:00:00.337761 seconds
-Step  8:   0:00:00.005096 seconds
-[31mStep  9:   0:00:00.098341 seconds - cached query
-[32mStep  9.1: 0:00:00.000017 seconds
-Step 10:   0:00:00.834176 seconds
-Step 11:   0:00:00.182373 seconds
-Step 12:   0:00:00.044020 seconds
-[31mStep 13:   0:00:00.185424 seconds - parquet cached query
-[32mStep 13.1: 0:00:00.000011 seconds
-Step 14:   0:00:00.016702 seconds
-Step 15:   0:00:00.001966 seconds
-[33mTotal  :   0:00:07.628776 seconds
+Step  0:   0:00:00.120194 seconds
+Step  1:   0:00:04.629175 seconds
+Step  2:   0:00:00.017497 seconds
+Step  3:   0:00:00.626836 seconds
+Step  4:   0:00:00.230085 seconds
+Step  5:   0:00:00.187201 seconds
+[31mStep  6:   0:00:00.200497 seconds - non-cached query[32m
+[32mStep  7:   0:00:00.386560 seconds
+Step  8:   0:00:00.005471 seconds
+[31mStep  9:   0:00:00.106381 seconds - cached query
+[32mStep  9.1: 0:00:00.000013 seconds
+Step 10:   0:00:00.803794 seconds
+Step 11:   0:00:00.185602 seconds
+Step 12:   0:00:00.035744 seconds
+[31mStep 13:   0:00:00.183310 seconds - parquet cached query
+[32mStep 13.1: 0:00:00.000013 seconds
+Step 14:   0:00:00.014750 seconds
+Step 15:   0:00:00.002491 seconds
+[33mTotal  :   0:00:07.735614 seconds
 
 [32mRuntime Reduction
 
-[31mCached Query Reduction  : 56.40%
-Parquet Query Reduction : 17.80%
+[31mCached Query Reduction  : 46.94%
+Parquet Query Reduction : 8.57%
 
-[37m2023-09-03 21:38:55.368551 [33m=========END============================================[37m
+[37m2023-09-04 18:27:37.300300 [33m=========END============================================[37m
