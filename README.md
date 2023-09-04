@@ -14,7 +14,7 @@ In this challenge, you'll use your knowledge of SparkSQL to determine key metric
   - home_sales_partitioned.parquet (Various partitions)
 - Resource (**Local copy of the Data used in the Python Script**)
   - home_sales_revised.csv
-- README.md (**Tis file**)
+- README.md (**This file**)
 - Home_Sales_Analysis.ipynb (**Jupyter Notebook**)
 - Home_Sales_Analysis.py (**Python Script**)
 
