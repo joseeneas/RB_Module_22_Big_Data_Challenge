@@ -42,20 +42,20 @@ In this challenge, you'll use your knowledge of SparkSQL to determine key metric
 
 #### 9. Using the cached data, run the query that filters out the view ratings with an average price >= $350,000
 
-#### 9.1 Determine the runtime and compare it to uncached runtime
+#### 10. Determine the runtime and compare it to uncached runtime
 
-#### 10. Partition by the "date_built" field on the formatted parquet home sales data
+#### 11. Partition by the "date_built" field on the formatted parquet home sales data
 
-#### 11. Read the parquet formatted data
+#### 12. Read the parquet formatted data
 
-#### 12. Create a temporary table for the parquet data
+#### 13. Create a temporary table for the parquet data
 
-#### 13. Run the query that filters the view ratings with an average price >= $350,000
+#### 14. Run the query that filters the view ratings with an average price >= $350,000
 
-#### 13.1  Determine the runtime and compare it to uncached runtime
+#### 15.  Determine the runtime and compare it to uncached runtime
 
-#### 14. Un-cache the home_sales temporary table
+#### 16. Un-cache the home_sales temporary table
 
-#### 15. Verify that the home_sales temporary table is uncached
+#### 17. Verify that the home_sales temporary table is uncached
 
 ---------------------------------------------------------------
