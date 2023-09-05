@@ -6,7 +6,7 @@
 # 
 
 # %%
-#
+#Title: Home Sales Analysis
 # Step 0 - Environment Setup
 #
 
@@ -68,6 +68,9 @@ logStep(F"STEP 0 - ELAPSED TIME: {step0_elapsed_time} seconds=========")
 # %% [markdown]
 # Step 1 - Read in the source file into a DataFrame
 
+# %% [markdown]
+# 
+
 # %%
 #
 # Step 1 - Read in the source file into a DataFrame.
@@ -75,15 +78,22 @@ logStep(F"STEP 0 - ELAPSED TIME: {step0_elapsed_time} seconds=========")
 
 start_time = datetime.datetime.now()
 logStep("STEP 1 - READ SOURCE DATA=============================");
+
 print(Fore.GREEN)
-findspark.init()
-spark = SparkSession.builder.appName("SparkSQL").getOrCreate()
-
-url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.2/22-big-data/home_sales_revised.csv"
-
-spark.sparkContext.addFile(url)
-home_df = spark.read.csv(SparkFiles.get("home_sales_revised.csv"), sep=",", header=True, ignoreLeadingWhiteSpace=True)
-home_df.show()
+try:
+  findspark.init()
+  spark = SparkSession.builder.appName("SparkSQL").getOrCreate()
+  spark.sparkContext.setLogLevel("ERROR")
+  url   = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.2/22-big-data/home_sales_revised.csv"
+  spark.sparkContext.addFile(url)
+  home_df = spark.read.csv(SparkFiles.get("home_sales_revised.csv"), sep=",", header=True, ignoreLeadingWhiteSpace=True)
+  home_df.show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 1 - Spark operation - Source data read successfully.")
+  print()
 
 logStep("STEP 1 - DONE=========================================");
 end_time           = datetime.datetime.now()
@@ -100,11 +110,17 @@ logStep(F"STEP 1 - ELAPSED TIME: {step1_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 2 - CREATE A TEMPORARY VIEW======================")
-print(Fore.GREEN)
 
-home_df.createOrReplaceTempView('home_sales')
-print('This step does not produce visible output.')
-print('')
+print(Fore.GREEN)
+try:
+  home_df.createOrReplaceTempView('home_sales')
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 2 - Spark operation - Temporary view created successfully.")
+  print()
+
 logStep("STEP 2 - DONE=========================================")
 end_time           = datetime.datetime.now()
 step2_elapsed_time = end_time - start_time
@@ -121,14 +137,22 @@ logStep(F"STEP 2 - ELAPSED TIME: {step2_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 3 - WHAT IS THE AVERAGE PRICE?=4BR===============")
+
 print(Fore.GREEN)
-
-spark.sql("SELECT YEAR(date)          as YEAR, \
-                  ROUND(AVG(price),2) as AVERAGE \
-             FROM home_sales WHERE bedrooms == 4 \
-                  GROUP BY YEAR(date) \
-                  ORDER BY YEAR(date) desc").show()
-
+try:
+  spark.sql("SELECT YEAR(date)          AS YEAR, \
+                    ROUND(AVG(price),2) AS AVERAGE \
+               FROM home_sales \
+              WHERE bedrooms == 4 \
+           GROUP BY YEAR(date) \
+           ORDER BY YEAR(date) DESC").show()
+except Exception as e:
+     print(Fore.RED + F"Exception: {e}")
+     sys.exit(1)
+else:
+     print(Fore.GREEN + "Step 3 - Spark operation - Query executed successfully.")
+     print()
+     
 logStep("STEP 3 - DONE=========================================")
 end_time           = datetime.datetime.now()
 step3_elapsed_time = end_time - start_time
@@ -144,14 +168,22 @@ logStep(F"STEP 3 - ELAPSED TIME: {step3_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 4 - WHAT IS THE AVERAGE PRICE?=3BR/3B============")
-print(Fore.GREEN)
 
-spark.sql("SELECT date_built as YEAR , \
-                  ROUND(AVG(price),2) as AVERAGE  \
-             FROM home_sales WHERE bedrooms == 3 AND \
-                                   bathrooms == 3 \
-                  GROUP BY date_built \
-                  ORDER BY date_built desc").show()
+print(Fore.GREEN)
+try:
+  spark.sql("SELECT date_built          AS YEAR , \
+                    ROUND(AVG(price),2) AS AVERAGE  \
+               FROM home_sales \
+              WHERE bedrooms == 3 AND \
+                    bathrooms == 3 \
+          GROUP BY date_built \
+          ORDER BY date_built DESC").show()    
+except Exception as e:
+     print(Fore.RED + F"Exception: {e}")
+     sys.exit(1)
+else:
+     print(Fore.GREEN + "Step 4 - Spark operation - Query executed successfully.")
+     print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 4 - DONE=========================================")
@@ -170,17 +202,25 @@ logStep(F"STEP 4 - ELAPSED TIME: {step4_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 5 - WHAT IS THE AVERAGE PRICE?=3R/3/2============")
-print(Fore.GREEN)
 
-spark.sql("SELECT date_built as YEAR, \
-           ROUND(AVG(price),2) as AVERAGE from home_sales \
-           where bedrooms  == 3 AND \
-                 bathrooms == 3 AND \
-                    floors == 2 AND \
-               sqft_living >= 2000 \
-                 group by date_built \
-                 order by date_built desc").show()
-  
+print(Fore.GREEN)
+try:
+  spark.sql("SELECT date_built          AS YEAR, \
+                    ROUND(AVG(price),2) AS AVERAGE \
+               FROM home_sales \
+              WHERE bedrooms    == 3 AND \
+                    bathrooms   == 3 AND \
+                    floors      == 2 AND \
+                    sqft_living >= 2000 \
+           GROUP BY date_built \
+           ORDER BY date_built DESC").show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 5 - Spark operation - Query executed successfully.")
+  print()
+
 end_time           = datetime.datetime.now()
 logStep("STEP 5 - DONE=========================================")
 step5_elapsed_time = end_time - start_time
@@ -197,14 +237,21 @@ logStep(F"STEP 5 - ELAPSED TIME: {step5_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 6 - WHAT IS THE AVERAGE PRICE?=300K==============")
-print(Fore.GREEN)
 
-spark.sql("SELECT view as VIEW, \
-                  ROUND(AVG(price),2) AS AVERAGE \
-             FROM home_sales \
-             GROUP BY view \
-           HAVING ROUND(AVG(price),2) >= 350000 \
-           ORDER BY view").show()
+print(Fore.GREEN)
+try:
+  spark.sql("SELECT view                AS VIEW, \
+                    ROUND(AVG(price),2) AS AVERAGE \
+               FROM home_sales \
+           GROUP BY view \
+             HAVING ROUND(AVG(price),2) >= 350000 \
+           ORDER BY view DESC").show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1) 
+else:
+  print(Fore.GREEN + "Step 6 - Spark operation - Query executed successfully.")
+  print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 6 - DONE=========================================")
@@ -222,12 +269,17 @@ logStep(F"STEP 6 - ELAPSED TIME: {step6_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 7 - CACHE HOME DATA==============================")
+
 print(Fore.GREEN)
-
-spark.sql("cache table home_sales")
-
-print('This step does not produce visible output.')
-print()
+try:
+  spark.sql("cache table home_sales")
+except Exception as e:
+    print(Fore.RED + F"Exception: {e}")
+    sys.exit(1) 
+else:
+    print(Fore.GREEN + "Step 7 - Spark operation - Cache executed successfully.")
+    print()
+    
 end_time           = datetime.datetime.now()
 logStep("STEP 7 - DONE=========================================")
 step7_elapsed_time = end_time - start_time
@@ -243,13 +295,20 @@ logStep(F"STEP 7 - ELAPSED TIME: {step7_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 8 - IS THE DATA CACHED===========================")
-print(Fore.GREEN)
 
-if (spark.catalog.isCached('home_sales') == False):
-    print("home_sales is not cached")
-else:
-    print("home_sales is cached")
 print(Fore.GREEN)
+try:
+  if (spark.catalog.isCached('home_sales') == False):
+    print("home_sales is not cached")
+  else:
+    print("home_sales is cached")
+except Exception as e:
+    print(Fore.RED + F"Exception: {e}")
+    sys.exit(1)
+else:
+    print(Fore.GREEN + "Step 8 - Spark operation - Cache check executed successfully.")
+    print()
+
 end_time           = datetime.datetime.now()
 logStep("STEP 8 - DONE=========================================")
 step8_elapsed_time = end_time - start_time
@@ -265,15 +324,22 @@ logStep(F"STEP 8 - ELAPSED TIME: {step8_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 9 - REPEAT QUERY=================================")
+
 print(Fore.GREEN)
-
-spark.sql("SELECT view as VIEW, \
-                  ROUND(AVG(price),2) AS AVERAGE \
-             FROM home_sales \
-             GROUP BY view \
-           HAVING ROUND(AVG(price),2) >= 350000 \
-           ORDER BY view").show()
-
+try:
+  spark.sql("SELECT view                AS VIEW, \
+                    ROUND(AVG(price),2) AS AVERAGE \
+               FROM home_sales \
+           GROUP BY view \
+             HAVING ROUND(AVG(price),2) >= 350000 \
+           ORDER BY view DESC").show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 9 - Spark operation - Query executed successfully.")
+  print() 
+  
 end_time           = datetime.datetime.now()
 logStep("STEP 9 - DONE=========================================")
 step9_elapsed_time = end_time - start_time
@@ -290,15 +356,15 @@ logStep(F"STEP 9 - ELAPSED TIME: {step9_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 9.1 - RUNTIME DIFFERENCE =========================")
-print(Fore.GREEN)
 
+print(Fore.GREEN)
 print(F"Time required for a non-cached Query: {step6_elapsed_time}")
 print(F"Time required for a cached Query    : {step9_elapsed_time}")
 time_difference = step6_elapsed_time - step9_elapsed_time
 print(F"Time difference                     : {time_difference}")
-end_time           = datetime.datetime.now()
 print(Fore.GREEN)
 
+end_time           = datetime.datetime.now()
 logStep("STEP 9.1 - DONE========================================")
 step91_elapsed_time = end_time - start_time
 logStep(F"STEP 9.1 - ELAPSED TIME: {step91_elapsed_time} seconds========")
@@ -314,10 +380,17 @@ logStep(F"STEP 9.1 - ELAPSED TIME: {step91_elapsed_time} seconds========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 10 - FORMATTED PARQUET============================")
-print(Fore.GREEN)
-home_df.write.parquet('home_parquet', mode='overwrite',partitionBy='date_built')
-home_df.show()
 
+print(Fore.GREEN)
+try:
+  home_df.write.parquet('home_parquet', mode='overwrite',partitionBy='date_built')
+  home_df.show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 10 - Spark operation - Parquet file created successfully.")
+  print()   
 
 end_time           = datetime.datetime.now()
 logStep("STEP 10 - DONE=========================================")
@@ -334,10 +407,17 @@ logStep(F"STEP 10 - ELAPSED TIME: {step10_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 11 - READ PARQUET=================================")
-print(Fore.GREEN)
 
-parquet_home_df = spark.read.parquet('home_parquet')
-parquet_home_df.show()
+print(Fore.GREEN)
+try:
+  parquet_home_df = spark.read.parquet('home_parquet')
+  parquet_home_df.show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 11 - Spark operation - Parquet file read successfully.")
+  print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 11 - DONE=========================================")
@@ -354,10 +434,17 @@ logStep(F"STEP 11 - ELAPSED TIME: {step11_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 12 - CREATE PARQUET VIEW==========================")
-print(Fore.GREEN)
 
-parquet_home_df.createOrReplaceTempView('parquet_temp_home')
-parquet_home_df.show()
+print(Fore.GREEN)
+try:
+  parquet_home_df.createOrReplaceTempView('parquet_temp_home')
+  parquet_home_df.show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 12 - Spark operation - Parquet view created successfully.")
+  print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 12 - DONE=========================================")
@@ -374,15 +461,22 @@ logStep(F"STEP 12 - ELAPSED TIME: {step12_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 13 - REPEAT QUERY=================================")
+
 print(Fore.GREEN)
-
-spark.sql("SELECT view as VIEW, \
-                  ROUND(AVG(price),2) AS AVERAGE \
-             FROM parquet_temp_home \
-             GROUP BY view \
-           HAVING ROUND(AVG(price),2) >= 350000 \
-           ORDER BY view").show()
-
+try:
+  spark.sql("SELECT view                AS VIEW, \
+                    ROUND(AVG(price),2) AS AVERAGE \
+               FROM parquet_temp_home \
+           GROUP BY view \
+             HAVING ROUND(AVG(price),2) >= 350000 \
+           ORDER BY view DESC").show()
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 13 - Spark operation - Parquet query executed successfully.")
+  print()
+  
 end_time           = datetime.datetime.now()
 logStep("STEP 13 - DONE=========================================")
 step13_elapsed_time = end_time - start_time
@@ -400,12 +494,14 @@ logStep(F"STEP 13 - ELAPSED TIME: {step13_elapsed_time} seconds=========")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 13.1 - RUNTIME DIFFERENCE ========================")
+
 print(Fore.GREEN)
 print(F"Time required for a non-cached Query    : {step6_elapsed_time}")
 print(F"Time required for a parquet cached Query: {step13_elapsed_time}")
 time_difference = step6_elapsed_time - step13_elapsed_time
 print(F"Time difference                         : {time_difference}")
 print(Fore.GREEN)
+
 end_time           = datetime.datetime.now()
 logStep("STEP 13.1 - DONE=======================================")
 step131_elapsed_time = end_time - start_time
@@ -421,11 +517,16 @@ logStep(F"STEP 13.1 - ELAPSED TIME: {step131_elapsed_time} seconds=======")
 
 start_time         = datetime.datetime.now()
 logStep("STEP 14 - UN-CACHE=====================================")
-print(Fore.GREEN)
 
-spark.sql("uncache table home_sales")
-print('This step does not produce visible output.')
-print()
+print(Fore.GREEN)
+try:
+  spark.sql("uncache table home_sales")
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 14 - Spark operation - Uncache executed successfully.")
+  print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 14 - DONE=========================================")
@@ -441,13 +542,19 @@ logStep(F"STEP 14 - ELAPSED TIME: {step14_elapsed_time} seconds=========")
 #
 start_time         = datetime.datetime.now()
 logStep("STEP 15 - CACHE= CHECK=================================")
-print(Fore.GREEN)
 
-if (spark.catalog.isCached('home_sales') == False):
-    print("home_sales is not cached")
-else:
-    print("home_sales is cached")
 print(Fore.GREEN)
+try:
+  if (spark.catalog.isCached('home_sales') == False):
+      print("home_sales is not cached")
+  else:
+      print("home_sales is cached")
+except Exception as e:
+  print(Fore.RED + F"Exception: {e}")
+  sys.exit(1)
+else:
+  print(Fore.GREEN + "Step 15 - Spark operation - Cache check executed successfully.")
+  print()
 
 end_time           = datetime.datetime.now()
 logStep("STEP 15 - DONE=========================================")

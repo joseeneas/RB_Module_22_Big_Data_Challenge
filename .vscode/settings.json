@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "getegid",
+        "geteuid",
+        "getgid",
+        "getlogin",
+        "getpid",
+        "getppid",
+        "getuid",
+        "sysname"
+    ]
+}
