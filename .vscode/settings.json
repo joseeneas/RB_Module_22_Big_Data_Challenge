@@ -1,0 +1,12 @@
+{
+    "cSpell.ignoreWords": [
+        "getegid",
+        "geteuid",
+        "getgid",
+        "getlogin",
+        "getpid",
+        "getppid",
+        "getuid",
+        "sysname"
+    ]
+}
