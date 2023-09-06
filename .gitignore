@@ -229,3 +229,4 @@ home_parquet/date_built=2016/.part-00000-cb9151b4-c870-4ee8-8587-4cf10b59bb04.c0
 home_parquet/date_built=2016/part-00000-cb9151b4-c870-4ee8-8587-4cf10b59bb04.c000.snappy.parquet
 home_parquet/date_built=2017/.part-00000-cb9151b4-c870-4ee8-8587-4cf10b59bb04.c000.snappy.parquet.crc
 home_parquet/date_built=2017/part-00000-cb9151b4-c870-4ee8-8587-4cf10b59bb04.c000.snappy.parquet
+home_parquet
